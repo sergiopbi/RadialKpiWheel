@@ -1,0 +1,181 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Values",
+            "displayNameKey": "Role_Values",
+            "name": "values",
+            "kind": "Measure",
+            "description": "Drag up to 13 percentage metrics, one per slice. The wheel auto-adjusts to however many are bound. To control the order, rename the field in the well with a leading number, e.g. '1 - Sales', '2 - Margin'.",
+            "descriptionKey": "Role_Values_Desc"
+        }
+    ],
+    "dataViewMappings": [
+        {
+            "conditions": [
+                { "values": { "max": 13 } }
+            ],
+            "categorical": {
+                "values": {
+                    "select": [
+                        { "for": { "in": "values" } }
+                    ]
+                }
+            }
+        }
+    ],
+    "objects": {
+        "general": {
+            "properties": {
+                "formatString": {
+                    "type": { "formatting": { "formatString": true } }
+                }
+            }
+        },
+        "ring": {
+            "displayName": "Ring layout",
+            "displayNameKey": "Ring_Card",
+            "properties": {
+                "targetValue": { "displayName": "Target value (= 100% fill)", "displayNameKey": "Ring_TargetValue", "type": { "numeric": true } },
+                "startValue": { "displayName": "Start value (= 0% fill)", "displayNameKey": "Ring_StartValue", "type": { "numeric": true } },
+                "scaleType": {
+                    "displayName": "Scale type",
+                    "displayNameKey": "Ring_ScaleType",
+                    "type": { "enumeration": [
+                        { "displayName": "Linear", "displayNameKey": "Ring_ScaleLinear", "value": "linear" },
+                        { "displayName": "Power (emphasize high values)", "displayNameKey": "Ring_ScalePower", "value": "power" },
+                        { "displayName": "Logarithmic (emphasize high values)", "displayNameKey": "Ring_ScaleLog", "value": "log" }
+                    ] }
+                },
+                "scaleIntensity": { "displayName": "Scale intensity", "displayNameKey": "Ring_ScaleIntensity", "type": { "numeric": true } },
+                "showScaleLabel": { "displayName": "Show scale range label (recommended when start value > 0)", "displayNameKey": "Ring_ShowScaleLabel", "type": { "bool": true } },
+                "innerRadiusPercent": { "displayName": "Center hole size (%)", "displayNameKey": "Ring_InnerRadiusPercent", "type": { "numeric": true } },
+                "gapPixels": { "displayName": "Gap between slices (px, constant width)", "displayNameKey": "Ring_GapPixels", "type": { "numeric": true } },
+                "showOutline": { "displayName": "Show outer outline", "displayNameKey": "Ring_ShowOutline", "type": { "bool": true } },
+                "outlineColor": { "displayName": "Outer outline color", "displayNameKey": "Ring_OutlineColor", "type": { "fill": { "solid": { "color": true } } } },
+                "outlineWidth": { "displayName": "Outer outline width (px)", "displayNameKey": "Ring_OutlineWidth", "type": { "numeric": true } }
+            }
+        },
+        "referenceRings": {
+            "displayName": "Reference rings",
+            "displayNameKey": "RefRings_Card",
+            "properties": {
+                "ring1Enabled": { "displayName": "Ring 1 - enable", "displayNameKey": "RefRings_1Enabled", "type": { "bool": true } },
+                "ring1Value": { "displayName": "Ring 1 - value", "displayNameKey": "RefRings_1Value", "type": { "numeric": true } },
+                "ring1Color": { "displayName": "Ring 1 - color", "displayNameKey": "RefRings_1Color", "type": { "fill": { "solid": { "color": true } } } },
+                "ring1Width": { "displayName": "Ring 1 - width (px)", "displayNameKey": "RefRings_1Width", "type": { "numeric": true } },
+                "ring2Enabled": { "displayName": "Ring 2 - enable", "displayNameKey": "RefRings_2Enabled", "type": { "bool": true } },
+                "ring2Value": { "displayName": "Ring 2 - value", "displayNameKey": "RefRings_2Value", "type": { "numeric": true } },
+                "ring2Color": { "displayName": "Ring 2 - color", "displayNameKey": "RefRings_2Color", "type": { "fill": { "solid": { "color": true } } } },
+                "ring2Width": { "displayName": "Ring 2 - width (px)", "displayNameKey": "RefRings_2Width", "type": { "numeric": true } },
+                "ring3Enabled": { "displayName": "Ring 3 - enable", "displayNameKey": "RefRings_3Enabled", "type": { "bool": true } },
+                "ring3Value": { "displayName": "Ring 3 - value", "displayNameKey": "RefRings_3Value", "type": { "numeric": true } },
+                "ring3Color": { "displayName": "Ring 3 - color", "displayNameKey": "RefRings_3Color", "type": { "fill": { "solid": { "color": true } } } },
+                "ring3Width": { "displayName": "Ring 3 - width (px)", "displayNameKey": "RefRings_3Width", "type": { "numeric": true } },
+                "ring4Enabled": { "displayName": "Ring 4 - enable", "displayNameKey": "RefRings_4Enabled", "type": { "bool": true } },
+                "ring4Value": { "displayName": "Ring 4 - value", "displayNameKey": "RefRings_4Value", "type": { "numeric": true } },
+                "ring4Color": { "displayName": "Ring 4 - color", "displayNameKey": "RefRings_4Color", "type": { "fill": { "solid": { "color": true } } } },
+                "ring4Width": { "displayName": "Ring 4 - width (px)", "displayNameKey": "RefRings_4Width", "type": { "numeric": true } }
+            }
+        },
+        "coloring": {
+            "displayName": "Coloring",
+            "displayNameKey": "Coloring_Card",
+            "properties": {
+                "colorMode": {
+                    "displayName": "Color mode",
+                    "displayNameKey": "Coloring_ColorMode",
+                    "type": { "enumeration": [
+                        { "displayName": "Fixed per slice", "displayNameKey": "Coloring_ModeFixed", "value": "fixed" },
+                        { "displayName": "Red / Green (target achieved)", "displayNameKey": "Coloring_ModeRedGreen", "value": "redgreen" },
+                        { "displayName": "By completion (start/mid/end)", "displayNameKey": "Coloring_ModeCompletion", "value": "completion" }
+                    ] }
+                },
+                "useGradient": { "displayName": "Use gradient fade (center to edge)", "displayNameKey": "Coloring_UseGradient", "type": { "bool": true } },
+                "colorAchieved": { "displayName": "Red/Green - achieved color", "displayNameKey": "Coloring_ColorAchieved", "type": { "fill": { "solid": { "color": true } } } },
+                "colorNotAchieved": { "displayName": "Red/Green - not achieved color", "displayNameKey": "Coloring_ColorNotAchieved", "type": { "fill": { "solid": { "color": true } } } },
+                "startColor": { "displayName": "Gradient start / Completion color at 0%", "displayNameKey": "Coloring_StartColor", "type": { "fill": { "solid": { "color": true } } } },
+                "quarterColor": { "displayName": "Completion - color at 25%", "displayNameKey": "Coloring_QuarterColor", "type": { "fill": { "solid": { "color": true } } } },
+                "midColor": { "displayName": "Completion - color at 50%", "displayNameKey": "Coloring_MidColor", "type": { "fill": { "solid": { "color": true } } } },
+                "threeQuarterColor": { "displayName": "Completion - color at 75%", "displayNameKey": "Coloring_ThreeQuarterColor", "type": { "fill": { "solid": { "color": true } } } },
+                "endColor": { "displayName": "Completion - color at 100%", "displayNameKey": "Coloring_EndColor", "type": { "fill": { "solid": { "color": true } } } }
+            }
+        },
+        "sliceColors": {
+            "displayName": "Slice colors (fixed mode)",
+            "displayNameKey": "SliceColors_Card",
+            "properties": {
+                "slice1": { "displayName": "Slice 1", "displayNameKey": "SliceColors_1", "type": { "fill": { "solid": { "color": true } } } },
+                "slice2": { "displayName": "Slice 2", "displayNameKey": "SliceColors_2", "type": { "fill": { "solid": { "color": true } } } },
+                "slice3": { "displayName": "Slice 3", "displayNameKey": "SliceColors_3", "type": { "fill": { "solid": { "color": true } } } },
+                "slice4": { "displayName": "Slice 4", "displayNameKey": "SliceColors_4", "type": { "fill": { "solid": { "color": true } } } },
+                "slice5": { "displayName": "Slice 5", "displayNameKey": "SliceColors_5", "type": { "fill": { "solid": { "color": true } } } },
+                "slice6": { "displayName": "Slice 6", "displayNameKey": "SliceColors_6", "type": { "fill": { "solid": { "color": true } } } },
+                "slice7": { "displayName": "Slice 7", "displayNameKey": "SliceColors_7", "type": { "fill": { "solid": { "color": true } } } },
+                "slice8": { "displayName": "Slice 8", "displayNameKey": "SliceColors_8", "type": { "fill": { "solid": { "color": true } } } },
+                "slice9": { "displayName": "Slice 9", "displayNameKey": "SliceColors_9", "type": { "fill": { "solid": { "color": true } } } },
+                "slice10": { "displayName": "Slice 10", "displayNameKey": "SliceColors_10", "type": { "fill": { "solid": { "color": true } } } },
+                "slice11": { "displayName": "Slice 11", "displayNameKey": "SliceColors_11", "type": { "fill": { "solid": { "color": true } } } },
+                "slice12": { "displayName": "Slice 12", "displayNameKey": "SliceColors_12", "type": { "fill": { "solid": { "color": true } } } },
+                "slice13": { "displayName": "Slice 13", "displayNameKey": "SliceColors_13", "type": { "fill": { "solid": { "color": true } } } }
+            }
+        },
+        "valueLabel": {
+            "displayName": "Value labels",
+            "displayNameKey": "ValueLabel_Card",
+            "properties": {
+                "show": { "displayName": "Show labels", "displayNameKey": "ValueLabel_Show", "type": { "bool": true } },
+                "content": {
+                    "displayName": "Label content",
+                    "displayNameKey": "ValueLabel_Content",
+                    "type": { "enumeration": [
+                        { "displayName": "Percentage only", "displayNameKey": "ValueLabel_ContentValueOnly", "value": "valueOnly" },
+                        { "displayName": "Percentage + metric name", "displayNameKey": "ValueLabel_ContentValueAndName", "value": "valueAndName" }
+                    ] }
+                },
+                "wrapName": { "displayName": "Wrap metric name to fit slice", "displayNameKey": "ValueLabel_WrapName", "type": { "bool": true } },
+                "maxNameLines": { "displayName": "Max lines for metric name", "displayNameKey": "ValueLabel_MaxNameLines", "type": { "numeric": true } },
+                "fontFamily": { "displayName": "Font family", "displayNameKey": "ValueLabel_FontFamily", "type": { "formatting": { "fontFamily": true } } },
+                "fontSize": { "displayName": "Font size", "displayNameKey": "ValueLabel_FontSize", "type": { "formatting": { "fontSize": true } } },
+                "bold": { "displayName": "Bold", "displayNameKey": "ValueLabel_Bold", "type": { "bool": true } },
+                "autoContrast": { "displayName": "Automatic text color (light/dark by fill)", "displayNameKey": "ValueLabel_AutoContrast", "type": { "bool": true } },
+                "manualColor": { "displayName": "Text color (when automatic is off)", "displayNameKey": "ValueLabel_ManualColor", "type": { "fill": { "solid": { "color": true } } } },
+                "lightColor": { "displayName": "Text color on dark fill", "displayNameKey": "ValueLabel_LightColor", "type": { "fill": { "solid": { "color": true } } } },
+                "darkColor": { "displayName": "Text color on light fill", "displayNameKey": "ValueLabel_DarkColor", "type": { "fill": { "solid": { "color": true } } } }
+            }
+        },
+        "center": {
+            "displayName": "Center icon",
+            "displayNameKey": "Center_Card",
+            "properties": {
+                "icon": { "displayName": "Icon image URL or data URI", "displayNameKey": "Center_Icon", "type": { "text": true } },
+                "showIcon": { "displayName": "Show icon", "displayNameKey": "Center_ShowIcon", "type": { "bool": true } },
+                "iconWidthPercent": { "displayName": "Icon width (%)", "displayNameKey": "Center_IconWidthPercent", "type": { "numeric": true } },
+                "iconHeightPercent": { "displayName": "Icon height (%)", "displayNameKey": "Center_IconHeightPercent", "type": { "numeric": true } },
+                "iconFitMode": {
+                    "displayName": "Icon fit mode",
+                    "displayNameKey": "Center_IconFitMode",
+                    "type": { "enumeration": [
+                        { "displayName": "Fit (contain)", "displayNameKey": "Center_IconFitContain", "value": "contain" },
+                        { "displayName": "Fill (cover)", "displayNameKey": "Center_IconFitCover", "value": "cover" },
+                        { "displayName": "Stretch", "displayNameKey": "Center_IconFitStretch", "value": "stretch" }
+                    ] }
+                },
+                "backgroundColor": { "displayName": "Center background color", "displayNameKey": "Center_BackgroundColor", "type": { "fill": { "solid": { "color": true } } } },
+                "backgroundTransparency": { "displayName": "Center background transparency (%)", "displayNameKey": "Center_BackgroundTransparency", "type": { "numeric": true } },
+                "showBorder": { "displayName": "Show center border", "displayNameKey": "Center_ShowBorder", "type": { "bool": true } },
+                "borderColor": { "displayName": "Center border color", "displayNameKey": "Center_BorderColor", "type": { "fill": { "solid": { "color": true } } } },
+                "borderWidth": { "displayName": "Center border width (px)", "displayNameKey": "Center_BorderWidth", "type": { "numeric": true } }
+            }
+        }
+    },
+    "privileges": [],
+    "supportsLandingPage": true,
+    "supportsKeyboardFocus": true,
+    "tooltips": {
+        "supportedTypes": {
+            "default": true,
+            "canvas": true
+        },
+        "supportEnhancedTooltips": true
+    }
+}
