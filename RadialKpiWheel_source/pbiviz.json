@@ -4,9 +4,9 @@
         "displayName": "Radial KPI Wheel",
         "guid": "radialKpiWheelAE0F93CEBEB34221A86B1DC1CFE01DE7",
         "visualClassName": "Visual",
-        "version": "1.0.0.0",
+        "version": "1.0.0.1",
         "description": "A configurable radial wheel where each slice is bound to an independent percentage metric, filling from the center outward with a gradient up to 100 percent and solid color beyond.",
-        "supportUrl": "https://example.com/support",
+        "supportUrl": "https://github.com/sergiopbi/RadialKpiWheel/issues",
         "gitHubUrl": ""
     },
     "apiVersion": "5.10.0",
@@ -25,5 +25,5 @@
         "stringResources/en-US/resources.resjson",
         "stringResources/pt-PT/resources.resjson"
     ],
-    "version": "1.0.0.0"
+    "version": "1.0.0.1"
 }
